@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vixlan Store - Penjualan Suntik Sosmed</title>
+    <style>
+        /* Reset dan Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #0a0a0a;
+            color: #f0f0f0;
+            line-height: 1.6;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1a1a1a, #000);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(255, 215, 0, 0.1);
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ffd700; /* Emas */
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        .nav-links li a {
+            color: #f0f0f0;
+            transition: color 0.3s ease;
+        }
+        .nav-links li a:hover {
+            color: #ffd700;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://via.placeholder.com/1920x800/000/ffd700?text=Luxury+Background') center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-top: 80px; /* Offset untuk fixed header */
+        }
+        .hero-content h1 {
+            font-size: 4rem;
+            color: #ffd700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .cta-button {
+            background: #ffd700;
+            color: #000;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Products Section */
+        .products {
+            padding: 5rem 0;
+            background: #111;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            color: #ffd700;
+            margin-bottom: 3rem;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .product-card {
+            background: linear-gradient(145deg, #1a1a1a, #000);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+        }
+        .product-image {
+            width: 100%;
+            height: 250px;
+            background: #333 url('https://via.placeholder.com/300x250/ffd700/000?text=Product+1') center/cover;
+        }
+        .product-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .product-info h3 {
+            color: #ffd700;
+            margin-bottom: 0.5rem;
+        }
+        .product-info p {
+            color: #ccc;
+            margin-bottom: 1rem;
+        }
+        .price {
+            font-size: 1.5rem;
+            color: #ffd700;
+            font-weight: bold;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #1a1a1a, #000);
+        }
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        .contact-info h2 {
+            color: #ffd700;
+            margin-bottom: 1rem;
+        }
+        .contact-info p {
+            margin-bottom: 1rem;
+            color: #ccc;
+        }
+        .contact-form {
+            background: #111;
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        .form-group label {
+            display: block;
+            color: #ffd700;
+            margin-bottom: 0.5rem;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            background: #222;
+            border: 1px solid #444;
+            border-radius: 5px;
+            color: #f0f0f0;
+        }
+        .submit-button {
+            background: #ffd700;
+            color: #000;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+        .submit-button:hover {
+            background: #e6c200;
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            text-align: center;
+            padding: 2rem 0;
+            color: #ccc;
+            border-top: 1px solid rgba(255, 215, 0, 0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Sederhana, bisa ditambahkan mobile menu jika diperlukan */
+            }
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">Vixlan Store</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Produk</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Selamat Datang di Suntik Sosmed </h1>
+            <p>Temukan gaya hidup dengan Suntik Sosmed Vixlan, Video anda menjadi FYP, Dan bisa membuat Followers anda bertambah</p>
+            <a href="#products" class="cta-button">Belanja Sekarang</a>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products">
+        <div class="container">
+            <h2 class="section-title">Best Seller</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3>Like Tiktok</h3>
+                        <p>Deskripsi singkat produk dengan kualitas tinggi dan desain elegan.</p>
+                        <div class="price">Start From Rp.2000</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image" style="background: #333 url('https://via.placeholder.com/300x250/ffd700/000?text=Product+2') center/cover;"></div>
+                    <div class="product-info">
+                        <h3>Viewers Tiktok</h3>
+                        <p>Deskripsi singkat produk dengan kualitas tinggi dan desain elegan.</p>
+                        <div class="price">Start From Rp.1000</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image" style="background: #333 url('https://via.placeholder.com/300x250/ffd700/000?text=Product+3') center/cover;"></div>
+                    <div class="product-info">
+                        <h3>Followers Tiktok</h3>
+                        <p>Deskripsi singkat produk dengan kualitas tinggi dan desain elegan.</p>
+                        <div class="price">Start From Rp.4000</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2>Hubungi Kami</h2>
+                    <p>Untuk pertanyaan atau pemesanan khusus, silakan hubungi kami melalui detail di bawah ini.</p>
+                    <p><strong>Telepon:</strong> +6285602423176</p>
+                    <p><strong>Email:</strong> raffiarmandanur1@gmail.com </p>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Nama</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Pesan</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">Kirim Pesan</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Suntik Sosmed. Semua hak cipta dilindungi.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Sederhana JS untuk smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Form submission (placeholder)
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Pesan Anda telah dikirim! Terima kasih.');
+        });
+    </script>
+</body>
+</html>
